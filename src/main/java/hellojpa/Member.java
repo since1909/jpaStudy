@@ -15,7 +15,7 @@ public class Member {
         this.name = name;
     }
 
-    private Member() {
+    public Member() {
 
     };
 

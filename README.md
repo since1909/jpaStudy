@@ -1,4 +1,5 @@
 # jpa Study
 
 ## h2
-## hibernate
+실습용 서버로 사용
+
