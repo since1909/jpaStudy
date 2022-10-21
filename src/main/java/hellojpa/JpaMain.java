@@ -18,20 +18,18 @@ public class JpaMain {
 
 
         try {
-            // insert
-            Member member = new Member();
-            member.setId(2L);
-            member.setName("HelloB");
+            // 영속
+            // Member member1 = new Member(150L, "A");
+            // Member member2 = new Member(160L, "B");
 
-            // select
-            Member findMember = em.find(Member.class, 1L);
+            // em.persist(member1);
+            // em.persist(member2);
 
-            //update
-            findMember.setName("HelloJPA");
-            // em.persist(findMember);
+            // 저장된 데이터 변경 : dirty checking
+            Member member = em.find(Member.class, 150L);
+            member.setName("ZZZZZ");
 
-            // delete
-            // em.remove(findMember);
+            // 실제 쿼리가 수행되는 시점
             tx.commit();
         } catch (Exception e) {
             tx.rollback();

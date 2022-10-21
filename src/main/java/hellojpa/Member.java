@@ -10,6 +10,15 @@ public class Member {
     private Long id;
     private String name;
 
+    public Member(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    private Member() {
+
+    };
+
     public Long getId() {
         return id;
     }
