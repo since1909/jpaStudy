@@ -1,18 +1,26 @@
 package hellojpa;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 @Entity
+@SequenceGenerator(name = "member_seq_generator", sequenceName = "member_seq")
 public class Member {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq_generator")
     private Long id;
-    private String name;
 
-    public Member(Long id, String name) {
+    @Column(name = "name", nullable = false)
+    private String username;
+
+    public Member(Long id, String username) {
         this.id = id;
-        this.name = name;
+        this.username = username;
     }
 
     public Member() {
@@ -27,11 +35,11 @@ public class Member {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String name) {
+        this.username = name;
     }
 }

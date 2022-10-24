@@ -4,7 +4,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.swing.plaf.metal.MetalMenuBarUI;
 
 public class JpaMain {
 
@@ -26,8 +25,13 @@ public class JpaMain {
             // em.persist(member2);
 
             // 저장된 데이터 변경 : dirty checking
-            Member member = em.find(Member.class, 150L);
-            member.setName("ZZZZZ");
+
+            // SEQUENCE
+            // Member member = em.find(Member.class, 150L);
+            Member member = new Member();
+            member.setUsername("C");
+
+            em.persist(member);
 
             // 실제 쿼리가 수행되는 시점
             tx.commit();
