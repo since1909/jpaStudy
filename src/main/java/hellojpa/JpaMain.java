@@ -17,23 +17,20 @@ public class JpaMain {
 
 
         try {
-            // 영속
-            // Member member1 = new Member(150L, "A");
-            // Member member2 = new Member(160L, "B");
+            Team team = new Team();
+            team.setName("TeamA");
+            //team.getMembers().add(member);
+            em.persist(team);
 
-            // em.persist(member1);
-            // em.persist(member2);
-
-            // 저장된 데이터 변경 : dirty checking
-
-            // SEQUENCE
-            // Member member = em.find(Member.class, 150L);
             Member member = new Member();
-            member.setUsername("C");
-
+            member.setUsername("member1");
+            member.setTeam(team);
             em.persist(member);
 
-            // 실제 쿼리가 수행되는 시점
+
+            em.flush();
+            em.close();
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
